@@ -1,0 +1,49 @@
+{
+  "name": "minecraft.js",
+  "version": "0.1.0",
+  "description": "A complete library for managing Minecraft installations, modpacks, and running instances",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha -r node_modules/ts-node/register ./test/**/*.spec.ts --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DLii-Technologies/minecraft.js.git"
+  },
+  "keywords": [
+    "minecraft",
+    "js"
+  ],
+  "author": "David Ludwig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DLii-Technologies/minecraft.js/issues"
+  },
+  "homepage": "https://github.com/DLii-Technologies/minecraft.js#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/dotenv": "^6.1.0",
+    "@types/form-data": "^2.2.1",
+    "@types/got": "^9.2.0",
+    "@types/jsonfile": "^4.0.1",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.10",
+    "@types/underscore": "^1.8.9",
+    "async": "^2.6.1",
+    "chai": "^4.2.0",
+    "dotenv": "^6.1.0",
+    "find-java-home": "^0.2.0",
+    "form-data": "^2.3.3",
+    "fs-jetpack": "^2.2.0",
+    "got": "^9.3.2",
+    "jsonfile": "^5.0.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.6",
+    "underscore": "^1.9.1"
+  }
+}
