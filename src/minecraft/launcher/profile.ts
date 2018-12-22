@@ -12,6 +12,12 @@ export default class Profile
 {
 	constructor () {}
 
+	// Methods -------------------------------------------------------------------------------------
+
+	delete () {}
+
+	// Accessors/Mutators --------------------------------------------------------------------------
+
 	/**
 	 * Get the date the profile was created
 	 */

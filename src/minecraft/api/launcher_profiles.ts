@@ -25,37 +25,14 @@ export function read (file ?: string) {
 export function parse (obj : ILauncherProfiles) {
 	let launcherProfiles = generate();
 	// Stuff to do here...
+	return obj;
 }
 
 /**
  * Generate a new launcher_profiles JSON object
  */
-export function generate () : ILauncherProfiles {
-	return {
-		analyticsFailcount: undefined,
-		analyticstoken    : undefined,
-		clientToken       : undefined,
-		selectedProfile   : undefined,
-		settings          : {
-			enableAnalytics : undefined,
-			enableAdvanced  : undefined,
-			keepLauncherOpen: undefined,
-			showMenu        : undefined,
-			locale          : undefined,
-			profileSorting  : undefined,
-			showGameLog     : undefined,
-			crashAssistance : undefined,
-			enableSnapshots : undefined,
-			enableHistorical: undefined
-		},
-		launcherVersion: defaultLauncherVersion(),
-		profiles       : {
-
-		},
-		selectedUser : {
-
-		}
-	}
+export function generate () {
+	// Generate a new launcher profiles JSON object
 }
 
 export function defaultLauncherVersion () {

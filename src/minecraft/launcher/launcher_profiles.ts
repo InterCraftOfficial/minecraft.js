@@ -1,11 +1,16 @@
 import { ILauncherProfiles } from "../api/types";
+import AuthenticationDatabase from "./authentication_database";
+import Profiles from "./profiles";
 
 
 export default class LauncherProfiles
 {
+	private __authDb  : AuthenticationDatabase;
+	private __profiles: Profiles;
 
 	constructor () {
-
+		this.__authDb   = new AuthenticationDatabase();
+		this.__profiles = new Profiles();
 	}
 
 	// Accessors -----------------------------------------------------------------------------------
@@ -86,5 +91,10 @@ export default class LauncherProfiles
 	 * account profile which has a reference to the
 	 * account that owns that profile. Maybe...
 	 */
-	setSelectedUser (AccountProfile) {}
+	setSelectedUser () {}
+
+	/**
+	 * Set the launcher settings
+	 */
+	setSettings () {}
 }

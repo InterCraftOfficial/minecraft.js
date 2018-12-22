@@ -7,8 +7,8 @@ export default class User
 	 */
 	static authenticate (email: string, password: string) {}
 
-	private __accessToken: string;
-	private __email      : string;
+	// private __accessToken: string;
+	// private __email      : string;
 
 	/**
 	 * Store the clientToken for convenience
@@ -21,7 +21,9 @@ export default class User
 	private __account ?: IAccount;
 
 
-	constructor (account: IAccount) {}
+	// constructor (user: IUser, account: IAccount) {
+
+	// }
 
 	// Methods -------------------------------------------------------------------------------------
 
