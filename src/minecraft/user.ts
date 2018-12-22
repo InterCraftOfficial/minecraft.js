@@ -1,4 +1,7 @@
 import { IAccount } from "mojang/api/types";
+import { Mojang } from "../";
+import { resolve } from "path";
+import { rejects } from "assert";
 
 export default class User
 {
@@ -13,44 +16,99 @@ export default class User
 	/**
 	 * Store the clientToken for convenience
 	 */
-	private __clientToken    ?: string;
+	private __clientToken ?: string;
 
 	/**
 	 * Store the account info after authentication
 	 */
-	private __account ?: IAccount;
+	private __account    ?: IAccount;
+	private __accessToken : string;
+	private __email       : string;
 
+	//private myVar1  : string | undefined; == private myVar2 ?: string; So I will remember*.
 
-	// constructor (user: IUser, account: IAccount) {
-
-	// }
+	/**
+	 * @TODO This constructor is temporary. Need to figure out how to properly handle this...
+	 */
+	constructor (accessToken: string, email: string) {
+		this.__accessToken = accessToken;
+		this.__email       = email;
+	}
 
 	// Methods -------------------------------------------------------------------------------------
 
 	/**
 	 * Authenticate the Minecraft account. Additional information will be available
+	 * 
+	 * Changed my mind on this one, gonna not return it lol
 	 */
-	authenticate (password : string) {}
+	authenticate (password : string) {
+		return new Promise((resolve,reject) => {
+			Mojang.Api.Auth.authenticate(this.__email,password).then((account) => {
+				this.__account = account;
+				resolve();
+			}).catch((err) => {
+				reject(err);
+			});
+		});
+	}
 
 	/**
 	 * Refresh the account
 	 */
-	refresh () {}
+	refresh () {
+		return new Promise((resolve,reject) => {
+			if (this.__clientToken == undefined) {
+				reject();
+				return;
+			}
+			Mojang.Api.Auth.refresh(this.__accessToken,this.__clientToken).then((account) => {
+				this.__account = account;
+				resolve();
+			}).catch((err) => {
+				reject(err);
+			});
+		});
+	}
 
 	/**
 	 * Validate the account's access token
 	 */
-	validate () {}
+	validate () {
+		return new Promise((resolve,reject) => {
+			Mojang.Api.Auth.validate(this.__accessToken, this.__clientToken).then(() => {
+				resolve();
+			}).catch((err) => {
+				reject(err);
+			});
+		});
+	}
 
 	/**
 	 * Invalidate the user's access token
 	 */
-	invalidate () {}
+	invalidate () {
+		return new Promise((resolve,reject) => {
+			Mojang.Api.Auth.invalidate(this.__accessToken, this.__clientToken).then(() => {
+				resolve();
+			}).catch((err) => {
+				reject(err);
+			});
+		});
+	}
 
 	/**
 	 * Invalidate all access tokens
 	 */
-	signout (password: string) {}
+	signout (password: string) {
+		return new Promise((resolve,reject) => {
+			Mojang.Api.Auth.signout(this.__email,password).then(() => {
+				resolve();
+			}).catch((err) => {
+				reject(err);
+			});
+		});
+	}
 
 	// Accessors/Mutators --------------------------------------------------------------------------
 
@@ -61,12 +119,16 @@ export default class User
 	/**
 	 * Get the account's access token
 	 */
-	accessToken () {}
+	accessToken () {
+		return this.__accessToken;
+	}
 
 	/**
 	 * Get the account ID
 	 */
-	id () {}
+	id () {
+		//return this.__id;
+	}
 
 	/**
 	 * Check if the account has been authenticated
@@ -78,12 +140,16 @@ export default class User
 	/**
 	 * Get the email associated with the account
 	 */
-	email () {}
+	email () {
+		return this.__email;
+	}
 
 	/**
 	 * Get the user's profile
 	 */
-	profile () {}
+	profile () {
+		
+	}
 
 	/**
 	 * Mojang has yet to implement this feature, but here it is
