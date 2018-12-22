@@ -11,9 +11,14 @@ export default class LauncherProfiles
 	// Accessors -----------------------------------------------------------------------------------
 
 	/**
-	 * Get the authentication database
+	 * Get the analytics fail count
 	 */
-	accounts () {}
+	analyticsFailCount () {}
+
+	/**
+	 * Get the analytics token
+	 */
+	analyticsToken () {}
 
 	/**
 	 * Get the client token
@@ -31,6 +36,11 @@ export default class LauncherProfiles
 	profiles () {}
 
 	/**
+	 * Get the selected profile
+	 */
+	selectedProfile () {}
+
+	/**
 	 * Get the selected user
 	 */
 	selectedUser () {}
@@ -40,10 +50,41 @@ export default class LauncherProfiles
 	 */
 	settings () {}
 
+	/**
+	 * Get the authentication database
+	 */
+	users () {}
+
 	// Mutators ------------------------------------------------------------------------------------
+
+	/**
+	 * Set the analytics fail count
+	 */
+	setAnalyticsFailCount (count: number) { }
+
+	/**
+	 * Set the analytics token
+	 */
+	setAnalyticsToken (token: string) {}
 
 	/**
 	 * Set the client token
 	 */
 	setClientToken () {}
+
+	/**
+	 * Set the selected profile
+	 */
+	setSelectedProfile () {}
+
+	/**
+	 * @TODO Not sure the best way to implement this...
+	 *
+	 * Should take in an account instance of some sort,
+	 * but it also needs the profile for that account...
+	 * There could be an object that represents the
+	 * account profile which has a reference to the
+	 * account that owns that profile. Maybe...
+	 */
+	setSelectedUser (AccountProfile) {}
 }

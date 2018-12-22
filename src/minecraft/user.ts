@@ -1,13 +1,27 @@
-export default class Account
+import { IAccount } from "mojang/api/types";
+
+export default class User
 {
+	/**
+	 * Authenticate a new user and return the instance
+	 */
+	static authenticate (email: string, password: string) {}
+
+	private __accessToken: string;
+	private __email      : string;
 
 	/**
-	 * Stored here for login method convenience
+	 * Store the clientToken for convenience
 	 */
-	private clientToken    ?: string;
-	private isAuthenticated : boolean = false;
+	private __clientToken    ?: string;
 
-	constructor () {}
+	/**
+	 * Store the account info after authentication
+	 */
+	private __account ?: IAccount;
+
+
+	constructor (account: IAccount) {}
 
 	// Methods -------------------------------------------------------------------------------------
 
@@ -38,6 +52,10 @@ export default class Account
 
 	// Accessors/Mutators --------------------------------------------------------------------------
 
+	accountInfo () {
+		return this.__account;
+	}
+
 	/**
 	 * Get the account's access token
 	 */
@@ -47,6 +65,13 @@ export default class Account
 	 * Get the account ID
 	 */
 	id () {}
+
+	/**
+	 * Check if the account has been authenticated
+	 */
+	isAuthenticated () {
+		return this.__account !== undefined;
+	}
 
 	/**
 	 * Get the email associated with the account

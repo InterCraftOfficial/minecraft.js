@@ -1,4 +1,4 @@
-import Account from "minecraft/account";
+import User from "minecraft/user";
 
 export default class AuthenticationDatabase
 {
@@ -7,7 +7,7 @@ export default class AuthenticationDatabase
 	/**
 	 * Add a new account
 	 */
-	add (account: Account) {}
+	add (account: User) {}
 
 	/**
 	 * Fetch all accounts

@@ -39,7 +39,7 @@ export interface IProfiles {
 		javaDir      ?: string,
 		javaArgs     ?: string,
 		resolution   ?: {
-			width: number,
+			width : number,
 			height: number
 		}
 	}
@@ -48,8 +48,8 @@ export interface IProfiles {
 export interface IAuthDatabase {
 	[id: string]: {
 		accessToken: string,
-		username: string,
-		profiles: {
+		username   : string,
+		profiles   : {
 			[uuid: string]: {
 				displayName: string
 			}
