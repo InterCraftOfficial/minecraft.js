@@ -1,3 +1,4 @@
+import { IProfile } from "./core/types";
 
 /**
  * Possible profile types
@@ -8,9 +9,11 @@ export enum ProfileType {
 	LatestSnapshot = "latest-snapshot"
 }
 
-export default class Profile
+export default class LauncherProfile
 {
-	constructor () {}
+	constructor (id: string, profile: IProfile) {
+
+	}
 
 	// Methods -------------------------------------------------------------------------------------
 

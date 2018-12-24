@@ -6,6 +6,7 @@ import { IAccount, IProfile, ITexturePropertyValue } from "../src/mojang/api/typ
 
 dotenv.config({ path: "test/.env" });
 
+let testAuth = <boolean><any>process.env["TEST_AUTH"];
 let username = <string>process.env["MOJANG_USERNAME"];
 let password = <string>process.env["MOJANG_PASSWORD"];
 let name     = <string>process.env["USERNAME"];
@@ -30,7 +31,7 @@ describe("Mojang API", () => {
 	});
 });
 
-if (username && password) {
+if (testAuth && username && password) {
 	describe("Mojang Auth API", () => {
 
 		let account : IAccount;

@@ -4,6 +4,7 @@
   "description": "A complete library for managing Minecraft installations, modpacks, and running instances",
   "main": "lib/index.js",
   "directories": {
+    "lib": "src",
     "test": "test"
   },
   "scripts": {

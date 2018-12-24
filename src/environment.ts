@@ -46,6 +46,13 @@ export function defaultMinecraftPath() {
 	}
 };
 
+/**
+ * Get the default path to the launcher_profiles.json file
+ */
+export function defaultLauncherProfilesPath() {
+	return joinPath(minecraftPath, "launcher_profiles.json");
+}
+
 // Environment Configuration -----------------------------------------------------------------------
 
 // The current operating system
