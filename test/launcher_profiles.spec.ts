@@ -20,6 +20,7 @@ describe("Launcher Profiles", () => {
 
 	it("created a profile", () => {
 		let profile = new LauncherProfile(LauncherProfileType.Custom);
+		profile.setLastUsed(new Date());
 		expect(launcherProfiles1.profiles().add(profile)).to.equal(true);
 		expect(launcherProfiles1.profiles().exists(profile)).to.equal(true);
 	});

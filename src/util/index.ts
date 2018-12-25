@@ -31,9 +31,9 @@ export function stringToDate (dateString: string) {
 /**
  * Convert a date to a string if the date exists
  */
-export function dateToString (date?: Date) {
+export function dateToString (date?: Date, useDefaultDate: boolean = false) {
 	if (!date || isNaN(date.getTime()))
-		return date;
+		return (useDefaultDate && defaultDate().toISOString()) || undefined;
 	return date.toISOString();
 }
 

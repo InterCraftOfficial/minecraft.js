@@ -64,6 +64,7 @@ export default class LauncherProfile
 	protected init (id: string, profile: IProfile) {
 		this.__id         = id;
 		this.__name       = profile.name;
+		this.__type       = <LauncherProfileType>profile.type;
 		this.__created    = Utils.stringToDate(<string>profile.created);
 		this.__lastUsed   = Utils.stringToDate(<string>profile.lastUsed);
 		this.__versionId  = profile.lastVersionId;
@@ -93,11 +94,11 @@ export default class LauncherProfile
 			name         : this.__name,
 			type         : this.__type,
 			created      : Utils.dateToString(this.__created),
-			lastUsed     : Utils.dateToString(this.__lastUsed) || Utils.defaultDate(),
+			lastUsed     : Utils.dateToString(this.__lastUsed, true),
 			lastVersionId: this.__versionId,
 			gameDir      : this.__gameDir,
 			javaDir      : this.__javaDir,
-			javaArgs     : (this.__javaArgs.length || undefined) && this.__javaArgs,
+			javaArgs     : (this.__javaArgs.length && this.__javaArgs.join(' ')) || undefined,
 			resolution   : this.__resolution
 		};
 	}
@@ -139,7 +140,9 @@ export default class LauncherProfile
 	/**
 	 * Get the date the profile was last used
 	 */
-	lastUsed () {}
+	lastUsed () {
+		return this.__lastUsed;
+	}
 
 	/**
 	 * @TODO Get a Version object instead
@@ -198,7 +201,10 @@ export default class LauncherProfile
 	/**
 	 * Set the date the profile was last used
 	 */
-	setLastUsed (lastUsed: Date) {}
+	setLastUsed (lastUsed: Date) {
+		this.__lastUsed = lastUsed;
+		return this;
+	}
 
 	/**
 	 * Set the last version ID
