@@ -17,7 +17,8 @@ export default class LauncherProfiles
 		let path = file || environment.defaultLauncherProfilesPath();
 		return new Promise<LauncherProfiles>((resolve, reject) => {
 			launcherProfiles.read(path).then((profiles) => {
-				resolve(new this(profiles, path));
+				let parsedProfiles = launcherProfiles.parse(profiles);
+				resolve(new this(parsedProfiles, path));
 			}).catch((err) => {
 				reject(err);
 			})
@@ -94,7 +95,7 @@ export default class LauncherProfiles
 		return new Promise((resolve, reject) => {
 			let json = this.json();
 			let path = this.__path || environment.defaultLauncherProfilesPath();
-			launcherProfiles.write(path, json);
+			launcherProfiles.write(path, json).then(resolve).catch(reject);
 		});
 	}
 
@@ -113,7 +114,9 @@ export default class LauncherProfiles
 	/**
 	 * Get the client token
 	 */
-	clientToken () {}
+	clientToken () {
+		return this.__clientToken;
+	}
 
 	/**
 	 * Get the launcher version
@@ -130,7 +133,9 @@ export default class LauncherProfiles
 	/**
 	 * Fetch and manage profiles
 	 */
-	profiles () {}
+	profiles () {
+		return this.__profiles;
+	}
 
 	/**
 	 * Get the selected profile
@@ -145,12 +150,16 @@ export default class LauncherProfiles
 	/**
 	 * Get the launcher settings
 	 */
-	settings () {}
+	settings () {
+		return this.__settings;
+	}
 
 	/**
 	 * Get the authentication database
 	 */
-	users () {}
+	users () {
+		return this.__authDb;
+	}
 
 	// Mutators ------------------------------------------------------------------------------------
 
