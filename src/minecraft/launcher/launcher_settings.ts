@@ -11,8 +11,15 @@ export default class LauncherSettings
 	 */
 	private __settings: ISettings;
 
-	constructor (settings: ISettings) {
-		this.__settings = <ISettings>JSON.parse(JSON.stringify(settings));
+	constructor (settings?: ISettings) {
+		this.__settings = settings ? <ISettings>JSON.parse(JSON.stringify(settings)) : {};
+	}
+
+	// Methods -------------------------------------------------------------------------------------
+
+	json () {
+		let result = JSON.parse(JSON.stringify(this.__settings));
+		return Object.keys(result).length == 0 ? undefined: result;
 	}
 
 	// Accessors -----------------------------------------------------------------------------------

@@ -5,7 +5,7 @@ import LauncherSettings      from "./launcher_settings";
 import * as launcherProfiles from "./core/launcher_profiles";
 import { ILauncherProfiles } from "./core/types";
 import { Uuid }              from "../../util";
-import { environment }       from "index";
+import { environment }       from "../../";
 
 
 export default class LauncherProfiles
@@ -78,11 +78,13 @@ export default class LauncherProfiles
 	 */
 	json () {
 		let result: ILauncherProfiles = {
-			authenticationDatabase: {},
+			authenticationDatabase: this.__authDb.json(),
 			clientToken           : this.__clientToken.toString(),
 			launcherVersion       : launcherProfiles.defaultLauncherVersion(),
-			profiles              : {}
+			profiles              : this.__profiles.json(),
+			settings              : this.__settings.json()
 		};
+		return result;
 	}
 
 	/**
@@ -90,7 +92,9 @@ export default class LauncherProfiles
 	 */
 	save () {
 		return new Promise((resolve, reject) => {
-
+			let json = this.json();
+			let path = this.__path || environment.defaultLauncherProfilesPath();
+			launcherProfiles.write(path, json);
 		});
 	}
 

@@ -31,6 +31,14 @@ export default class LauncherAuthDatabase
 	get () {}
 
 	/**
+	 * Convert the auth database to JSON format
+	 */
+	json () {
+		let result = {};
+		return result;
+	}
+
+	/**
 	 * Remove an account
 	 */
 	remove () {}

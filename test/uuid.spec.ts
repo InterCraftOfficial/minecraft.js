@@ -16,7 +16,7 @@ describe("UUID container", () => {
 	let uuid = Utils.Uuid.load(validUuid1);
 
 	it("should load successfully", () => {
-		expect(uuid).to.not.equal(false);
+		expect(uuid).to.not.equal(undefined);
 	});
 
 	it("should be valid", () => {
@@ -24,7 +24,7 @@ describe("UUID container", () => {
 	});
 
 	it("should fail to load", () => {
-		expect(Utils.Uuid.load(invalidUuid1)).to.equal(false);
+		expect(Utils.Uuid.load(invalidUuid1)).to.equal(undefined);
 	});
 
 	it("should be invalid", () => {
@@ -33,7 +33,7 @@ describe("UUID container", () => {
 	});
 
 	it("should be formatted correctly", () => {
-		expect(uuid).to.not.equal(false);
+		expect(uuid).to.not.equal(undefined);
 		expect((<Utils.Uuid>uuid).toString(true)).to.equal(validUuid1);
 		expect((<Utils.Uuid>uuid).toString(false)).to.equal(validUuid2);
 	});

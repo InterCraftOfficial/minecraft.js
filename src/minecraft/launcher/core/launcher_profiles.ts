@@ -1,6 +1,6 @@
 import * as path       from "path";
 import * as jsonfile   from "jsonfile";
-import { Utils }       from "index";
+import { Utils }       from "../../../";
 import {
 	ILauncherProfiles,
 	IProfile,
@@ -25,9 +25,9 @@ export function read (file: string) {
 /**
  * Write the launcher_profiles.json file
  */
-export function write (obj: ILauncherProfiles, file: string) {
+export function write (file: string, obj: ILauncherProfiles) {
 	return new Promise<ILauncherProfiles>((resolve, reject) => {
-		jsonfile.writeFile(file, {throws: false}, (err) => {
+		jsonfile.writeFile(file, obj, {throws: false, spaces: 2}, (err) => {
 			if (err) {
 				reject (err);
 			} else {

@@ -19,6 +19,9 @@ export default class LauncherProfile
 
 	delete () {}
 
+	json () {
+	}
+
 	// Accessors/Mutators --------------------------------------------------------------------------
 
 	/**
