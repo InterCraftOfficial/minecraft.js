@@ -113,10 +113,11 @@ export default class LauncherProfile
 	/**
 	 * Get the game directory
 	 */
-	gameDir () {}
-
+	gameDir () {
+		return __dirname;
+	}
 	/**
-	 * Get the ID of the profile
+	 * Get the Id
 	 */
 	id () {
 		return this.__id;
@@ -125,17 +126,16 @@ export default class LauncherProfile
 	/**
 	 * Get the java arguments
 	 */
-	javaArgs () {}
+	javaArgs () {
+		return this.__javaArgs;
+	}
 
 	/**
 	 * Get the Java directory
 	 */
-	javaDir () {}
-
-	/**
-	 * Get the "key" for this profile
-	 */
-	key () {}
+	javaDir () {
+		return this.__javaDir;
+	}
 
 	/**
 	 * Get the date the profile was last used
@@ -148,32 +148,45 @@ export default class LauncherProfile
 	 * @TODO Get a Version object instead
 	 * Get the last version ID
 	 */
-	lastVersionId () {}
+	lastVersionId () {
+		return this.__versionId;
+	}
 
 	/**
 	 * Get the name of the profile
 	 */
-	name () {}
+	name () {
+		return this.__name;
+	}
 
 	/**
 	 * Get the initial game resolution
 	 */
-	resolution () {}
+	resolution () {
+		return this.__resolution;
+	}
 
 	/**
 	 * Get the profile type
 	 */
-	type () {}
-
+	type () {
+		return this.__type;
+	}
 	/**
 	 * Get the date the profile was created
 	 */
-	setCreated (created: Date) {}
-
+	// Mutators ------------------------------------------------------------------------------------
+	setCreated (created: Date) {
+		this.__created = created;
+		return this;
+	}
 	/**
 	 * Get the game directory
 	 */
-	setGameDir (dir: string) {}
+	setGameDir (dir: string) {
+		this.__gameDir = dir;
+		return this;
+	}
 
 	/**
 	 * Set the ID of a profile
@@ -184,19 +197,20 @@ export default class LauncherProfile
 	}
 
 	/**
-	 * Get the java arguments
+	 * Set the java arguments
 	 */
-	setJavaArgs (args: Array<string>) {}
+	setJavaArgs (args: Array<string>) {
+		this.__javaArgs = args;
+		return this;
+	}
 
 	/**
 	 * Get the Java directory
 	 */
-	setJavaDir (dir: string) {}
-
-	/**
-	 * Set the "key" for the profile
-	 */
-	setkey (key: string) {}
+	setJavaDir (dir: string) {
+		this.__javaDir = dir;
+		return this;
+	}
 
 	/**
 	 * Set the date the profile was last used
@@ -209,12 +223,18 @@ export default class LauncherProfile
 	/**
 	 * Set the last version ID
 	 */
-	setLastVersionId (version: string) {}
+	setLastVersionId (version: string) {
+		this.__versionId = version;
+		return this;
+	}
 
 	/**
 	 * Set the name of the profile
 	 */
-	setName (name: string) {}
+	setName (name: string) {
+		this.__name = name;
+		return this;
+	}
 
 	/**
 	 * [NOT FOR STANDARD USE] Set the profile list that the profile is a part of
@@ -227,10 +247,23 @@ export default class LauncherProfile
 	/**
 	 * Set the initial game resolution
 	 */
-	setResolution (resolution: [number, number]) {}
+	setResolution (resolution?: [number, number]) {
+		if (!resolution) {
+			this.__resolution = undefined;
+		} else {
+			this.__resolution = {
+				width: resolution[0],
+				height: resolution[1]
+			}
+		}
+		return this;
+	}
 
 	/**
 	 * Set the profile type
 	 */
-	setType (type: LauncherProfileType) {}
+	setType (type: LauncherProfileType) {
+		this.__type = type;
+		return this;
+	}
 }
