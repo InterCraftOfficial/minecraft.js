@@ -1,7 +1,7 @@
 /**
  * Possible profile types
  */
-export declare enum ProfileType {
+export declare enum LauncherProfileType {
     Custom = "custom",
     LatestRelease = "latest-release",
     LatestSnapshot = "latest-snapshot"
@@ -89,5 +89,5 @@ export default class Profile {
     /**
      * Set the profile type
      */
-    setType(type: ProfileType): void;
+    setType(type: LauncherProfileType): void;
 }

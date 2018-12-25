@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Possible profile types
  */
-var ProfileType;
-(function (ProfileType) {
-    ProfileType["Custom"] = "custom";
-    ProfileType["LatestRelease"] = "latest-release";
-    ProfileType["LatestSnapshot"] = "latest-snapshot";
-})(ProfileType = exports.ProfileType || (exports.ProfileType = {}));
+var LauncherProfileType;
+(function (LauncherProfileType) {
+    LauncherProfileType["Custom"] = "custom";
+    LauncherProfileType["LatestRelease"] = "latest-release";
+    LauncherProfileType["LatestSnapshot"] = "latest-snapshot";
+})(LauncherProfileType = exports.LauncherProfileType || (exports.LauncherProfileType = {}));
 class Profile {
     constructor() { }
     // Methods -------------------------------------------------------------------------------------

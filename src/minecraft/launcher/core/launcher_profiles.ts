@@ -16,7 +16,7 @@ export function read (file: string) {
 			if (err) {
 				reject(err);
 			} else {
-				resolve(parse(obj));
+				resolve(obj);
 			}
 		});
 	});

@@ -1,5 +1,6 @@
 import LauncherProfile from "./launcher_profile";
 import { IProfiles }   from "./core/types";
+import { Utils } from "../../";
 
 export default class LauncherProfileList
 {
@@ -19,35 +20,57 @@ export default class LauncherProfileList
 	}
 
 	/**
-	 * Add a new account
+	 * Add a new lanucher profile
 	 */
-	add (profile: LauncherProfile) {}
+	add (profile: LauncherProfile) {
+		if (this.exists(profile)) {
+			return false;
+		}
+		this.__profiles.push(profile);
+		return true;
+	}
 
 	/**
-	 * Fetch all accounts
+	 * Fetch all launcher profiles
 	 */
-	all () {}
+	all () {
+		return this.__profiles.slice();
+	}
 
 	/**
-	 * Check if an account exists in the database
+	 * Check if a launcher profile exists in the list
 	 */
-	exists () {}
+	exists (profile: LauncherProfile) {
+		return this.__profiles.indexOf(profile) !== -1;
+	}
 
 	/**
 	 * Get an account from the database
 	 */
-	get () {}
+	get (id: string) {
+		for (let profile of this.__profiles) {
+			if (profile.id() == id) {
+				return profile;
+			}
+		}
+		return undefined;
+	}
 
 	/**
 	 * Convert the profile list to JSON format
 	 */
 	json () {
 		let result: IProfiles = {};
+		this.__profiles.forEach((profile) => {
+			result[profile.id()] = profile.json();
+		})
 		return result;
 	}
 
 	/**
 	 * Remove an account
 	 */
-	remove () {}
+	remove (profile: LauncherProfile) {
+		return Boolean(Utils.removeFromArray(this.__profiles, profile));
+	}
 }
