@@ -1,11 +1,15 @@
 import LauncherAuthDatabase  from "./launcher_auth_database";
-import LauncherProfile       from "./launcher_profile";
+import LauncherProfile, { ProfileType }       from "./launcher_profile";
 import LauncherProfileList   from "./launcher_profile_list";
 import LauncherSettings      from "./launcher_settings";
 import * as launcherProfiles from "./core/launcher_profiles";
 import { ILauncherProfiles } from "./core/types";
 import { Uuid }              from "../../util";
-import { environment }       from "../../";
+import { environment, Mojang }       from "../../";
+import { rejects } from "assert";
+import { Profiler } from "inspector";
+import { version } from "punycode";
+//import { IAccount } from "mojang/api/types";
 
 
 export default class LauncherProfiles
@@ -103,22 +107,30 @@ export default class LauncherProfiles
 	/**
 	 * Get the analytics fail count
 	 */
-	analyticsFailCount () {}
+	analyticsFailCount () {
+		return this.__analyticsFailCount;
+	}
 
 	/**
 	 * Get the analytics token
 	 */
-	analyticsToken () {}
+	analyticsToken () {
+		return this.__analyticsToken;
+	}
 
 	/**
 	 * Get the client token
 	 */
-	clientToken () {}
+	clientToken () {
+		return this.__clientToken;
+	}
 
 	/**
 	 * Get the launcher version
 	 */
-	launcherVersion () {}
+	launcherVersion () {
+		return version;
+	}
 
 	/**
 	 * Get the path to the launcher_profiles.json file
@@ -135,7 +147,9 @@ export default class LauncherProfiles
 	/**
 	 * Get the selected profile
 	 */
-	selectedProfile () {}
+	selectedProfile () {
+		return this.__selectedProfile;
+	}
 
 	/**
 	 * Get the selected user
@@ -145,41 +159,58 @@ export default class LauncherProfiles
 	/**
 	 * Get the launcher settings
 	 */
-	settings () {}
+	settings () {
+		return this.__settings;
+	}
 
 	/**
 	 * Get the authentication database
 	 */
-	users () {}
+	users () {
+		return this.__authDb;
+	}
 
 	// Mutators ------------------------------------------------------------------------------------
 
 	/**
 	 * Set the analytics fail count
 	 */
-	setAnalyticsFailCount (count: number) { }
+	setAnalyticsFailCount (count: number) {
+		this.__analyticsFailCount = count;
+		return this;
+	}
 
 	/**
 	 * Set the analytics token
 	 */
-	setAnalyticsToken (token: string) {}
+	setAnalyticsToken (token: Uuid) {
+		this.__analyticsToken = token;
+		return this;
+	}
 
 	/**
 	 * Set the client token
 	 */
-	setClientToken () {}
+	setClientToken (token: Uuid) {
+		this.__clientToken = token;
+		return this;
+	}
 
 	/**
 	 * Set the path to the launcher_profiles.json file
 	 */
 	setPath (path: string) {
 		this.__path = path;
+		return this;
 	}
 
 	/**
 	 * Set the selected profile
 	 */
-	setSelectedProfile () {}
+	setSelectedProfile (profile: LauncherProfile) {
+		this.__selectedProfile = profile;
+		return this;
+	}
 
 	/**
 	 * @TODO Not sure the best way to implement this...
@@ -195,5 +226,8 @@ export default class LauncherProfiles
 	/**
 	 * Set the launcher settings
 	 */
-	setSettings () {}
+	setSettings (settings : LauncherSettings) {
+		this.__settings = settings;
+		return this;
+	}
 }
