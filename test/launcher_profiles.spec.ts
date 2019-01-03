@@ -1,12 +1,21 @@
-import { expect } from "chai";
-import { Minecraft } from "../src";
+import * as jetpack from "fs-jetpack";
 import * as dotenv from "dotenv";
+import { expect } from "chai";
 import "mocha";
+
+/**
+ * Modules to test
+ */
 import {
 	LauncherProfile,
 	LauncherProfileType,
 	LauncherProfiles
-} from "../src/minecraft/launcher";
+} from "../src/minecraft/client/launcher";
+
+/**
+ * Initialize the data directory if it doesn't exist
+ */
+jetpack.dir("test/data/");
 
 let path = "test/data/launcher_profiles.json";
 let launcherProfiles1: LauncherProfiles;

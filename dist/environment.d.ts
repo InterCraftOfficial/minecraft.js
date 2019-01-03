@@ -16,6 +16,10 @@ export declare function detectJavaPath(): Promise<{}>;
  * Get the default path for Minecraft
  */
 export declare function defaultMinecraftPath(): string;
+/**
+ * Get the default path to the launcher_profiles.json file
+ */
+export declare function defaultLauncherProfilesPath(): string;
 export declare let os: string;
 export declare let javaPath: string;
 export declare let minecraftPath: string;

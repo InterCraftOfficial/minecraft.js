@@ -1,6 +1,6 @@
 import LauncherProfile from "./launcher_profile";
 import { IProfiles }   from "./core/types";
-import { Utils } from "../../";
+import { Utils }       from "../../../";
 
 export default class LauncherProfileList
 {

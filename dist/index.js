@@ -13,4 +13,6 @@ const Minecraft = __importStar(require("./minecraft"));
 exports.Minecraft = Minecraft;
 const Mojang = __importStar(require("./mojang"));
 exports.Mojang = Mojang;
+const Utils = __importStar(require("./util"));
+exports.Utils = Utils;
 //# sourceMappingURL=index.js.map

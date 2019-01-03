@@ -1,5 +1,5 @@
 import { IProfile } from "./core/types";
-import { Utils } from "../../";
+import { Utils } from "../../../";
 import { LauncherProfileList } from ".";
 
 /**

@@ -7,6 +7,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Client = __importStar(require("./client"));
-exports.Client = Client;
+const Launcher = __importStar(require("./launcher"));
+exports.Launcher = Launcher;
 //# sourceMappingURL=index.js.map

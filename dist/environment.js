@@ -49,6 +49,13 @@ function defaultMinecraftPath() {
 }
 exports.defaultMinecraftPath = defaultMinecraftPath;
 ;
+/**
+ * Get the default path to the launcher_profiles.json file
+ */
+function defaultLauncherProfilesPath() {
+    return path_1.join(exports.minecraftPath, "launcher_profiles.json");
+}
+exports.defaultLauncherProfilesPath = defaultLauncherProfilesPath;
 // Environment Configuration -----------------------------------------------------------------------
 // The current operating system
 exports.os = detectOs();

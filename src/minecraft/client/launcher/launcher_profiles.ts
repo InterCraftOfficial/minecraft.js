@@ -1,14 +1,11 @@
-import LauncherAuthDatabase  from "./launcher_auth_database";
-import LauncherProfile, { ProfileType }       from "./launcher_profile";
-import LauncherProfileList   from "./launcher_profile_list";
-import LauncherSettings      from "./launcher_settings";
-import * as launcherProfiles from "./core/launcher_profiles";
-import { ILauncherProfiles } from "./core/types";
-import { Uuid }              from "../../util";
-import { environment, Mojang }       from "../../";
-import { rejects } from "assert";
-import { Profiler } from "inspector";
-import { version } from "punycode";
+import LauncherAuthDatabase    from "./launcher_auth_database";
+import LauncherProfile         from "./launcher_profile";
+import LauncherProfileList     from "./launcher_profile_list";
+import LauncherSettings        from "./launcher_settings";
+import * as launcherProfiles   from "./core/launcher_profiles";
+import { ILauncherProfiles }   from "./core/types";
+import { Uuid }                from "../../../util";
+import { environment, Mojang } from "../../../";
 //import { IAccount } from "mojang/api/types";
 
 
@@ -130,7 +127,7 @@ export default class LauncherProfiles
 	 * Get the launcher version
 	 */
 	launcherVersion () {
-		return version;
+		// return this.__version;
 	}
 
 	/**

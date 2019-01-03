@@ -1,5 +1,5 @@
-import * as Launcher from "./launcher";
+import * as Client from "./client";
 
 export {
-	Launcher
+	Client
 }

@@ -13,30 +13,42 @@ export default class User {
      */
     private __account?;
     /**
-     * Authenticate the Minecraft account. Additional information will be available
+     * Genelat account information
      */
-    authenticate(password: string): void;
+    private __id;
+    private __accessToken;
+    private __email;
+    /**
+     * @TODO This constructor is temporary. Need to figure out how to properly handle this...
+     */
+    constructor(accessToken: string, email: string);
+    /**
+     * Authenticate the Minecraft account. Additional information will be available
+     *
+     * Changed my mind on this one, gonna not return it lol
+     */
+    authenticate(password: string): Promise<{}>;
     /**
      * Refresh the account
      */
-    refresh(): void;
+    refresh(): Promise<{}>;
     /**
      * Validate the account's access token
      */
-    validate(): void;
+    validate(): Promise<{}>;
     /**
      * Invalidate the user's access token
      */
-    invalidate(): void;
+    invalidate(): Promise<{}>;
     /**
      * Invalidate all access tokens
      */
-    signout(password: string): void;
+    signout(password: string): Promise<{}>;
     accountInfo(): IAccount | undefined;
     /**
      * Get the account's access token
      */
-    accessToken(): void;
+    accessToken(): string;
     /**
      * Get the account ID
      */
@@ -48,7 +60,7 @@ export default class User {
     /**
      * Get the email associated with the account
      */
-    email(): void;
+    email(): string;
     /**
      * Get the user's profile
      */

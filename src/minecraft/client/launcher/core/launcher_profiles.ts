@@ -1,6 +1,6 @@
-import * as path       from "path";
-import * as jsonfile   from "jsonfile";
-import { Utils }       from "../../../";
+import * as path     from "path";
+import * as jsonfile from "jsonfile";
+import { Utils }     from "../../../../";
 import {
 	ILauncherProfiles,
 	IProfile,
